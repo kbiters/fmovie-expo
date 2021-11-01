@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 
 
-export const Movie = ({id, title, genre, duration, language, rate}) => {
+export const Movie = ({id, title, genre, duration, language, rate, actors}) => {
     return (
         <View style={styles.moviesStyle}>
 
@@ -12,6 +12,7 @@ export const Movie = ({id, title, genre, duration, language, rate}) => {
             <Text style={styles.genre}>{duration} min.</Text>
             <Text style={styles.genre}>{language}</Text>
             <Text style={styles.rate}>{rate}</Text>
+            <Text style={styles.rate}>{actors}</Text>
         </View>
     );
 

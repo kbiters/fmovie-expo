@@ -7,7 +7,7 @@ export const Director = ({id, name}) => {
         <View style={styles.directorStyle}>
 
             <Text style={styles.id}>{id}</Text>
-            <Text style={styles.title}>{name}</Text>
+            <Text style={styles.name}>{name}</Text>
         </View>
     );
 

@@ -21,8 +21,10 @@ export const Movies = () => {
                 duration: movie.duration,
                 language: movie.language,
                 rate: movie.rate,
+                actors: movie.actors,
             };
         });
+
         setMovies(listOfMovies);
     }
 
@@ -45,6 +47,7 @@ export const Movies = () => {
                            duration={movie.duration}
                            language={movie.language}
                            rate={movie.rate}
+                           actors={movie.actors}
                     />
                 ))}
             </View>

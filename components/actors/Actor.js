@@ -7,7 +7,7 @@ export const Actor = ({id, name}) => {
         <View style={styles.actorStyle}>
 
             <Text style={styles.id}>{id}</Text>
-            <Text style={styles.title}>{name}</Text>
+            <Text style={styles.name}>{name}</Text>
         </View>
     );
 

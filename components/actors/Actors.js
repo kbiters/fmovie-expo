@@ -32,7 +32,7 @@ export const Actors = () => {
                 {actors.map((actor) => (
                     <Actor key={actor.id}
                            id={actor.id}
-                           title={actor.name}
+                           name={actor.name}
                     />
                 ))}
             </View>
