@@ -1,13 +1,22 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Button, StyleSheet, Text, View} from "react-native";
+import axios from "axios";
 
 
-export const Director = ({id, name}) => {
+export const Director = ({props}) => {
     return (
         <View style={styles.directorStyle}>
-
-            <Text style={styles.id}>{id}</Text>
-            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.id}>{props.directorID}</Text>
+            <Text style={styles.name}>{props.name}</Text>
+            <Text style={styles.name}>{props.lastName}</Text>
+            <View style={styles.button}>
+                <Button
+                    title="Delete"
+                    onPress={ () => {
+                        axios.delete(`http://192.168.1.95:8080/directors/${props.directorID}`)
+                    }}
+                />
+            </View>
         </View>
     );
 
@@ -19,7 +28,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         paddingTop: 10,
-
     },
 
     id: {

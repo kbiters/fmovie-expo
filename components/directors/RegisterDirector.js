@@ -1,53 +1,81 @@
-import { useState } from "react";
-import React from 'react';
-import { StyleSheet, TextInput, Button, SafeAreaView, Text, View } from 'react-native';
+import React, {useState} from "react";
+import {Button, SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 
 import axios from 'axios';
 
 export default function RegisterDirector() {
 
     const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
 
     const onSubmit = () => {
 
         const data = {
             name: name,
+            lastName: lastName,
         }
 
-        axios.post("http://localhost:8080/directors", data);
+        if (!(data.name === "") && !(data.lastName === "")) {
+            axios.post("http://192.168.1.95:8080/directors", data);
+            alert("Director saved successfully!")
+        } else {
+            alert("Director saving failed, both fields must be complete!")
+        }
 
     }
 
 
     return (
         <SafeAreaView>
-            <View style={styles.title}>
-                <Text>Register new director</Text>
+            <View style={styles.container}>
+                <View>
+                    <Text style={{
+                        marginVertical: 30,
+                        fontSize: 25,
+                    }}>Register new director</Text>
+                </View>
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setName}
+                    value={name}
+                    placeholder='Name'
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setLastName}
+                    value={lastName}
+                    placeholder='Last Name'
+                />
+
+                <View style={styles.buttonSubmit}>
+                    <Button
+                        onPress={onSubmit}
+                        title="Submit"
+                    />
+
+                </View>
             </View>
-
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setName}
-                value={name}
-                placeholder='Name-Director'
-            />
-
-            <Button
-                style={styles.button}
-                onPress={onSubmit}
-                title="Submit"
-            />
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create(
     {
+        container: {
+            flex: 1,
+            alignItems: 'center',
+            marginTop: 10,
+            marginBottom: 25,
+        },
+
         regForm: {
             alignSelf: 'stretch',
         },
 
         title: {
+            fontsize: 24,
             paddingBottom: 30,
         },
 
@@ -60,8 +88,6 @@ const styles = StyleSheet.create(
         },
 
         txtInput: {
-            alignSelf: 'stretch',
-            alignItems: 'center',
             height: 35,
             marginBottom: 30,
             paddingHorizontal: 10,
@@ -69,14 +95,10 @@ const styles = StyleSheet.create(
             borderBottomWidth: 1.5,
         },
 
-        button: {
-            alignSelf: 'stretch',
-            alignItems: 'center',
-            padding: 20,
-            backgroundColor: '#42CCD8',
-            marginTop: 40,
-            borderRadius: 10,
+        buttonSubmit: {
+            marginTop: 10,
+            opacity: 0.8,
         },
-        
+
     }
 );

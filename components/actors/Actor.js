@@ -1,14 +1,24 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Button, StyleSheet, Text, View} from "react-native";
+import axios from "axios";
 
 
-export const Actor = ({id, name}) => {
+
+export const Actor = ({props}) => {
     return (
         <View style={styles.actorStyle}>
 
-            <Text style={styles.id}>{id}</Text>
-            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.id}>{props.actorID}</Text>
+            <Text style={styles.name}>{props.name}</Text>
+            <Text style={styles.name}>{props.lastName}</Text>
+            <Button
+                title="Delete"
+                onPress={ () => {
+                    axios.delete(`http://192.168.1.95:8080/actors/${props.actorID}`)
+                }}
+            />
         </View>
+
     );
 
 

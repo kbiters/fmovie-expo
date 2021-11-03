@@ -18,7 +18,6 @@ export default function RegisterMovie() {
     const [genre, setGenre] = useState("");
 
     const onSubmit = () => {
-
         const data = {
             title: title,
             overview: overview,
@@ -32,93 +31,98 @@ export default function RegisterMovie() {
             genre: genre,
         }
 
-        console.log(data);
-
-        axios.post("http://localhost:8080/movies", data);
-
+        if(!(title === "") && !(rate == null)) {
+            axios.post("http://192.168.1.95:8080/movies", data);
+            alert("Movie saved successfully!")
+        }else{
+            alert("Movie saving failed, both fields must be complete!")
+        }
     }
 
-
     return (
-
         <SafeAreaView>
-            <View>
-                <Text style={{
-                    marginVertical: 30,
-                    fontSize: 25,
-                }}>Add new movie</Text>
+            <View style={styles.container}>
+                <View>
+                    <Text style={{
+                        marginVertical: 30,
+                        fontSize: 25,
+                    }}>Add new movie</Text>
+                </View>
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setTitle}
+                    value={title}
+                    placeholder='Title'
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setOverview}
+                    value={overview}
+                    placeholder='Overview'
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setRate}
+                    value={rate}
+                    placeholder='Rate'
+                    keyboardType="numeric"
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setTrailer}
+                    value={trailer}
+                    placeholder='Trailer-URL'
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    value={releaseDate}
+                    onChangeText={setReleaseDate}
+                    placeholder='YYYY-MM-DD'
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setImage}
+                    value={image}
+                    placeholder='Image-URL'
+                />
+
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setLanguage}
+                    value={language}
+                    placeholder='Language'
+                />
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setDuration}
+                    value={duration}
+                    placeholder='Duration / min'
+                    keyboardType="numeric"
+                />
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setAdult}
+                    value={adult}
+                    placeholder='Adult'
+                />
+                <TextInput
+                    style={styles.txtInput}
+                    onChangeText={setGenre}
+                    value={genre}
+                    placeholder='Genre'
+                />
+
+                <Button
+                    onPress={onSubmit}
+                    style={styles.button}
+                    title="Submit"
+                />
             </View>
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setTitle}
-                value={title}
-                placeholder='Title'
-            />
-
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setOverview}
-                value={overview}
-                placeholder='Overview'
-            />
-
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setRate}
-                value={rate}
-                placeholder='Rate'
-                keyboardType="numeric"
-            />
-
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setTrailer}
-                value={trailer}
-                placeholder='Trailer-URL'
-            />
-
-            <TextInput
-                style={styles.txtInput}
-                value={releaseDate}
-                onChangeText={setReleaseDate}
-                placeholder='YYYY-MM-DD'
-            />
-
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setImage}
-                value={image}
-                placeholder='Image-URL'
-            />
-
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setLanguage}
-                value={language}
-                placeholder='Language'
-            />
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setDuration}
-                value={duration}
-                placeholder='Duration / min'
-                keyboardType="numeric"
-            />
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setAdult}
-                value={adult}
-                placeholder='Adult'
-            />
-            <TextInput
-                style={styles.txtInput}
-                onChangeText={setGenre}
-                value={genre}
-                placeholder='Genre'
-            />
-            <Button
-                onPress={onSubmit}
-            />
         </SafeAreaView>
 
     );
@@ -126,6 +130,14 @@ export default function RegisterMovie() {
 
 const styles = StyleSheet.create(
     {
+
+        container:{
+            flex: 1,
+            alignItems: 'center',
+            marginTop: 10,
+            marginBottom:25,
+        },
+
         regForm: {
             alignSelf: 'stretch',
         },
@@ -139,14 +151,11 @@ const styles = StyleSheet.create(
         },
 
         txtInput: {
-            alignSelf: 'stretch',
-            alignItems: 'center',
-            height: 40,
+            height: 35,
             marginBottom: 30,
             paddingHorizontal: 10,
-            borderWidth: 1.5,
-            borderRadius: 5,
-            borderColor: '#42CCD8',
+            borderBottomColor: '#42CCD8',
+            borderBottomWidth: 1.5,
         },
 
         button: {
@@ -154,7 +163,7 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             padding: 20,
             backgroundColor: '#42CCD8',
-            marginTop: 40,
+            margin: 40,
             borderRadius: 10,
         },
 
