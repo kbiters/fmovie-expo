@@ -5,21 +5,15 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Movies} from "./components/movies/Movies";
 import {Directors} from "./components/directors/Directors";
 import {Actors} from "./components/actors/Actors";
+import RegisterMovie from "./components/movies/RegisterMovie";
+import RegisterDirector from "./components/directors/RegisterDirector";
 
 export default function App() {
     return (
         <View style={styles.container}>
 
             <View>
-                <Movies/>
-            </View>
-
-            <View>
-                <Directors/>
-            </View>
-
-            <View>
-                <Actors/>
+                <RegisterMovie/>
             </View>
 
             <StatusBar style="auto"/>
