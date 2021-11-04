@@ -25,9 +25,7 @@ export const Movies = ({ navigation }) => {
                 duration: movie.duration,
                 releaseDate: movie.releaseDate,
                 adult: movie.adult,
-                genre: movie.genre,
-                directors: movie.directors,
-                actors: movie.actors,
+                genre: movie.genre
             };
         });
 
@@ -38,7 +36,7 @@ export const Movies = ({ navigation }) => {
         <View style={styles.container}>
             <View>
                 <Button
-                    title="RegisterMovie"
+                    title="Register Movie"
                     onPress={() => navigation.navigate('RegisterMovie')}
                 />
             </View>

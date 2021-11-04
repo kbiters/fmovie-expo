@@ -1,29 +1,36 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 
-const Home = ({ navigation }) => {
-        return (
-            <View style={styles.container}>
-                <Text style={{
-                    marginVertical: 10,
-                    fontSize: 50,
-                }}>Home FMovie</Text>
-                <View style={styles.ViewButtonHome}>
+const Home = ({navigation}) => {
+    return (
+        <View style={styles.container}>
+            <Text style={{
+                marginVertical: 10,
+                fontSize: 50,
+            }}>Home FMovie</Text>
+            <View style={styles.ViewButtonHome}>
+                <View style={styles.espace}>
                     <Button
                         title="Actors"
                         style={styles.btnHome}
                         onPress={() => navigation.navigate('Actors')}/>
+                </View>
+
+                <View style={styles.espace}>
                     <Button
                         title="Directors"
                         style={styles.btnHome}
                         onPress={() => navigation.navigate('Directors')}/>
+                </View>
+                <View style={styles.espace}>
                     <Button
                         title="Movies"
                         style={styles.btnHome}
                         onPress={() => navigation.navigate('Movies')}/>
                 </View>
             </View>
-        );
+        </View>
+    );
 }
 
 export default Home;
@@ -36,7 +43,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    ViewButtonHome:{
+    ViewButtonHome: {
         padding: 20,
         margin: 25,
     },
@@ -44,5 +51,9 @@ const styles = StyleSheet.create({
     btnHome: {
         padding: 20,
         margin: 25,
+    },
+
+    espace:{
+      margin: 10,
     },
 });

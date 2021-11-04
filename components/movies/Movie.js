@@ -15,13 +15,11 @@ export const Movie = ({ navigation, props }) => {
             <Text style={styles.genre}>{props.duration} min.</Text>
             <Text style={styles.genre}>{props.language}</Text>
             <Text style={styles.rate}>{props.rate}</Text>
-            <Text style={styles.rate}>{props.actors}</Text>
 
             <View style={styles.button}>
                 <Button
                     title="View"
                     onPress={ () => {
-                        console.log(props);
                         navigation.navigate('MovieDetailed', props)
                     }}
                 />
